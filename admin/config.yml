@@ -1,0 +1,41 @@
+backend:
+  name: github
+  repo: amarprobasjibonergolpo/amarprobasjibonergolpo
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+locale: "bn"
+site_url: https://amar-probas-jiboner-golpo.netlify.app
+
+collections:
+  - name: "stories"
+    label: "গল্পসমূহ"
+    files:
+      - name: "story-list"
+        label: "গল্প প্রকাশ ও সম্পাদনা"
+        file: "content/stories.json"
+        format: "json"
+        fields:
+          - label: "প্রকাশিত গল্পের তালিকা"
+            name: "stories"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.category}}"
+            fields:
+              - { label: "গল্পের শিরোনাম", name: "title", widget: "string" }
+              - label: "ক্যাটাগরি"
+                name: "category"
+                widget: "select"
+                options:
+                  - "পরিবার ও অনুভূতি"
+                  - "কাজের জীবন"
+                  - "হাউস ড্রাইভারের জীবন"
+                  - "স্বপ্ন ও সাফল্য"
+                  - "প্রবাসের বাস্তব অভিজ্ঞতা"
+                  - "অনুপ্রেরণা ও শিক্ষা"
+              - { label: "তারিখ", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD-MM-YYYY", time_format: false }
+              - { label: "গল্পের ছবি", name: "image", widget: "image", required: false }
+              - { label: "গল্পের লেখা", name: "body", widget: "text" }

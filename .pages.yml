@@ -1,0 +1,28 @@
+
+media:
+  input: media
+  output: /media
+
+content:
+  - name: stories
+    label: প্রবাস জীবনের গল্প
+    type: collection
+    path: stories
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        label: গল্পের শিরোনাম
+        type: string
+        required: true
+      - name: date
+        label: প্রকাশের তারিখ
+        type: date
+      - name: category
+        label: গল্পের বিভাগ
+        type: string
+      - name: image
+        label: গল্পের ছবি
+        type: image
+      - name: body
+        label: গল্প
+        type: rich-text

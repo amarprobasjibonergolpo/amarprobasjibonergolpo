@@ -51,4 +51,24 @@ header{background:rgba(255,255,255,.96);border-bottom:1px solid #e8ece9;position
 <script>
 let lang='bn';const btn=document.getElementById('langBtn');function setLang(next){lang=next;document.documentElement.lang=lang;document.querySelectorAll('[data-bn]').forEach(el=>{el.textContent=el.dataset[lang]});btn.textContent=lang==='bn'?'English':'বাংলা'}btn.addEventListener('click',()=>setLang(lang==='bn'?'en':'bn'));document.getElementById('year').textContent=new Date().getFullYear();
 </script>
+  fetch('https://api.github.com/repos/amarprobasjibonergolpo/amarprobasjibonergolpo/contents/stories')
+.then(r=>r.json()).then(files=>{
+let box=document.createElement('section');
+box.className='wrap';
+box.innerHTML='<h2>প্রবাস জীবনের গল্প</h2>';
+document.querySelector('main').appendChild(box);
+files.filter(f=>f.name.endsWith('.md')).forEach(f=>{
+fetch(f.download_url).then(r=>r.text()).then(t=>{
+let title=(t.match(/title:\s*["']?([^"'\n]+)/)||[])[1]||f.name;
+let body=t.split('---').slice(2).join('---').trim();
+let story=document.createElement('article');
+let h=document.createElement('h3');
+let p=document.createElement('p');
+h.textContent=title;
+p.textContent=body;
+story.append(h,p);
+box.appendChild(story);
+});
+});
+}).catch(()=>console.log('গল্প লোড হয়নি'));
 </body></html>

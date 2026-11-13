@@ -50,8 +50,7 @@ header{background:rgba(255,255,255,.96);border-bottom:1px solid #e8ece9;position
 <footer><div class="wrap foot"><div><strong>আমার প্রবাস জীবনের গল্প | Amar Probash Jiboner Golpo</strong><br><small data-bn="প্রবাসের গল্প, সবার হৃদয়ে।" data-en="Stories from abroad, close to every heart.">প্রবাসের গল্প, সবার হৃদয়ে।</small></div><div class="social"><a href="https://www.facebook.com/profile.php?id=61596120459036" target="_blank" rel="noopener">Facebook</a><a href="#contact">WhatsApp</a></div><small>© <span id="year"></span> Amar Probash Jiboner Golpo</small></div></footer>
 <script>
 let lang='bn';const btn=document.getElementById('langBtn');function setLang(next){lang=next;document.documentElement.lang=lang;document.querySelectorAll('[data-bn]').forEach(el=>{el.textContent=el.dataset[lang]});btn.textContent=lang==='bn'?'English':'বাংলা'}btn.addEventListener('click',()=>setLang(lang==='bn'?'en':'bn'));document.getElementById('year').textContent=new Date().getFullYear();
-</script>
-  fetch('https://api.github.com/repos/amarprobasjibonergolpo/amarprobasjibonergolpo/contents/stories')
+fetch('https://api.github.com/repos/amarprobasjibonergolpo/amarprobasjibonergolpo/contents/stories')
 .then(r=>r.json()).then(files=>{
 let box=document.createElement('section');
 box.className='wrap';
@@ -71,4 +70,5 @@ box.appendChild(story);
 });
 });
 }).catch(()=>console.log('গল্প লোড হয়নি'));
+</script>
 </body></html>
